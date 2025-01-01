@@ -1,33 +1,78 @@
 <div class="home">
-  <h1>Qual o o campo harmonico de D#</h1>
+  <h1>Qual o campo harmônico de D#</h1>
   <div class="answer">
-    <table>
-      <thead>
-        <tr>
-          <th>I</th>
-          <th>IIm</th>
-          <th>IIIm</th>
-          <th>IV</th>
-          <th>V</th>
-          <th>VIm</th>
-          <th>VIIm</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>D#</td>
-          <td>E#</td>
-          <td>F##</td>
-          <td>G#</td>
-          <td>A#</td>
-          <td>B#</td>
-          <td>C##</td>
-        </tr>
-    </table>
+    <form [formGroup]="harmonyForm">
+      <table>
+        <thead>
+          <tr>
+            <th>I</th>
+            <th>IIm</th>
+            <th>IIIm</th>
+            <th>IV</th>
+            <th>V</th>
+            <th>VIm</th>
+            <th>VIIm</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input
+                formControlName="I"
+                type="text"
+                placeholder="I"
+              />
+            </td>
+            <td>
+              <input
+                formControlName="IIm"
+                type="text"
+                placeholder="IIm"
+              />
+            </td>
+            <td>
+              <input
+                formControlName="IIIm"
+                type="text"
+                placeholder="IIIm"
+              />
+            </td>
+            <td>
+              <input
+                formControlName="IV"
+                type="text"
+                placeholder="IV"
+              />
+            </td>
+            <td>
+              <input
+                formControlName="V"
+                type="text"
+                placeholder="V"
+              />
+            </td>
+            <td>
+              <input
+                formControlName="VIm"
+                type="text"
+                placeholder="VIm"
+              />
+            </td>
+            <td>
+              <input
+                formControlName="VIIm"
+                type="text"
+                placeholder="VIIm"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
   </div>
   <div class="chord-options">
     <ul>
-      <li *ngFor="let chord of allChords">{{chord}}</li>
+      <li *ngFor="let chord of allChords">{{ chord }}</li>
     </ul>
   </div>
 </div>
