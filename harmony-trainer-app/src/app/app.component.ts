@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ChordsService } from './chords-service';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +9,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   title = 'harmony-trainer-app';
-  allChords = [
-    "C", "Cm", "C#", "C#m", "D", "Dm", "D#", "D#m",
-    "E", "Em", "F", "Fm", "F#", "F#m", "G", "Gm",
-    "G#", "G#m", "A", "Am", "A#", "A#m", "B", "Bm",
-  ];
+  allChords: string[] = [];
 
   harmonyForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private chordsService: ChordsService) {
     this.harmonyForm = this.fb.group({
       I: ['D#'],
       IIm: ['E#m'],
@@ -29,6 +26,17 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Any additional setup if needed
+    this.getChords();
+  }
+
+  getChords(): void {
+    this.chordsService.getChords().subscribe(
+      (data: string[]) => {
+        this.allChords = data;
+      },
+      (error) => {
+        console.error('Error fetching chords:', error);
+      }
+    );
   }
 }
